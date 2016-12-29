@@ -1,4 +1,4 @@
-﻿"""Blog URL Configuration
+"""Blog URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.10/topics/http/urls/
@@ -14,11 +14,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.contrib import admin
-from blogpost import views
+import views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', views.index, name='home'),
-    url(r'^blog/(?P<slug>[^\.]+).html', views.view_post, name='view_blog_post')
+    url(r'^$', views.index),
 ]
