@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blogpost',
+    'django_nose',
 ]
 
 MIDDLEWARE = [
@@ -117,12 +118,20 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static')
 # STATICFILES_DIRS = (
     # os.path.join(BASE_DIR, "common_static"),
 # )
 
+# Fonts setting
 # FILE_CHARSET='gb18030'
 # DEFAULT_CHARSET='utf-8'
+
+# Test setting
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+NOSE_ARGS = [
+    '--with-coverage',
+    '--cover-package=blogpost',
+    '--cover-inclusive',
+] 
