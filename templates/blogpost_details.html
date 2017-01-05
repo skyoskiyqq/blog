@@ -1,8 +1,43 @@
 ﻿{% extends 'base.html' %}
+{% load comments %}
+
 {% block _head_title %}{{ post.title }}{% endblock %}
 
 {% block content %}
-<h1>{{ post.title }}</h1>
-<h3>{{ post.posted }} - By {{ post.author}}</h2>
-<p>{{ post.body }}</p>
+<div class="mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+        {{post.body}}
+    </div>
+    <div class="mdl-card__actions">
+        {{post.posted}} - By {{post.author}}
+    </div>
+</div>
+
+{% get_comment_count for post as comment_count %} 
+<p>This event has {{ comment_count }} comments.</p>
+
+{% render_comment_list for post %}
+
+{% get_comment_form for post as form %}
+<form action='{%comment_form_target%}' method='post'>
+    {% csrf_token %}
+    {{form.object_pk}}
+    {{form.content_type}}
+    {{form.timestamp}}
+    {{form.site}}
+    {{form.submit_date}}
+    {{form.security_hash}}
+    <p><label for="id_name">姓名（必填）：</label><input name="name" id="id_name"></p>
+    <p><label for="id_email">邮箱（必填）：</label><input name="email" id="id_email"></p>
+    <p><label for="id_url">网站（可选）：</label><input name="url" id="id_url"></p>
+    <p><label for="id_comment">评论（必填）：</label></p>
+    <p><textarea id="id_comment" rows="10" cols="40" name="comment"></textarea></p>
+    <p style="display:none;"><label for="id_honeypot">垃圾评论。</label>
+    <input type="text" name="honeypot" id="id_honeypot"></p>
+    <p><input name="post" value="发表" type="submit" /></p>
+    <input type='hidden' name='next' value="{{ post.get_absolute_url }}"/> <!--这个是提交后的重定向，使用软编码总报错...-->
+</form>
 {% endblock %}

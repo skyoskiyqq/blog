@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^$', views.index, name='home'),
     url(r'^blog/(?P<slug>[^\.]+).html', views.view_post, name='view_blog_post'),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
+    url(r'^comments/', include('django_comments.urls')),
 ]
