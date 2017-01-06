@@ -16,6 +16,14 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from blogpost import views
+from django.contrib.sitemaps.views import sitemap
+from sitemap.sitemaps import BlogpostSitemap, StaticViewSitemap, FlatPageSitemap
+
+sitemaps = {
+    'blogpost': BlogpostSitemap,
+    'static': StaticViewSitemap,
+    'flatpage':FlatPageSitemap
+}
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -23,4 +31,5 @@ urlpatterns = [
     url(r'^blog/(?P<slug>[^\.]+).html', views.view_post, name='view_blog_post'),
     url(r'^pages/', include('django.contrib.flatpages.urls')),
     url(r'^comments/', include('django_comments.urls')),
+    url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps, 'template_name': 'custom_sitemap.html'}, name='django.contrib.sitemaps.views.sitemap'),
 ]

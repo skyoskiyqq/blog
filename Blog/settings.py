@@ -40,10 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.sitemaps',
     'django.contrib.flatpages',
     'django_comments',
     'blogpost',
-    'django_nose',
+    'django_nose'
 ]
 
 MIDDLEWARE = [
