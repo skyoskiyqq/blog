@@ -1,11 +1,12 @@
 ﻿{% extends 'base.html' %}
-{% block head_title %}Welcome To My Blog{% endblock %}
+{% block head_title %}Hu's Blog{% endblock %}
 
 {% block content %}
-<h1>博客</h1>
 {% for post in posts %}
-<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-<h3>{{ post.posted }} - By {{ post.author}}</h3>
+<div class="blog-post">
+<h2 class="blog-post-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+<p class="blog-post-meta">{{ post.posted }} by {{ post.author }}</p>
 <p>{{ post.body }}</p>
+</div>
 {% endfor %}
 {% endblock %}

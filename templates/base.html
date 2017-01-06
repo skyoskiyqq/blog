@@ -1,68 +1,73 @@
 ﻿{% load static %}
 <html>
     <head>
-        <meta charset=utf-8"/> 
+        <meta charset=utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>{% block head_title %}Welcome to my blog{% endblock %}</title>
 
-        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
     </head>
-    <body data-twttr-rendered="true" class="bs-docs-home">
-        <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+    <body>
+        <div class="blog-masthead">
             <div class="container">
-                <div class="navbar-header">
-                    <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
-                            data-target=".bs-navbar-collapse">
-                        <span class="sr-only">切换试图</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a href="/" class="navbar-brand">博客</a>
-                </div>
-                <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <a href="/pages/about/">关于我</a>
-                        </li>
-                        <li>
-                            <a href="/pages/resume/">简历</a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/admin" id="loginLink">登入</a></li>
-                    </ul>
-                    <div class="col-sm-3 col-md-3 pull-right">
-                        <form class="navbar-form" role="search">
-                            <div class="input-group">
-                                <input type="text" id="typeahead-input" class="form-control" placeholder="Search" name="search" data-provide="typeahead">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-default search-button" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                <nav class="blog-nav">
+                    <a class="blog-nav-item active" href="/">首页</a>>
+                    <a class="blog-nav-item" href="/pages/contact/">联系一下</a>
+                    <a class="blog-nav-item" href="/pages/about/">关于</a>
                 </nav>
             </div>
-        </header>
-        <main class="bs-docs-masthead" id="content" role="main">
-            <div class="container">
-                <div id="carbonads-container">
-                    THE ONLY FAIR IS NOT FAIR <br>
-                    ENJOY CREATE & SHARE
+        </div>
+        <div class="container">
+            <div class="blog-header">
+                <h1 class="blog-title">Hu's Blog</h1>
+                <p class="lead blog-description">学无止境</p>
+            </div>
+            <div class="row">
+                <div class="col-sm-8 blog-main">
+                    {% block content %}{% endblock %}
+                </div>
+                <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module sidebar-module-inset">
+                        <h4>About</h4>
+                        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                    </div>
+                    <div class="sidebar-module">
+                        <h4>Archives</h4>
+                        <ol class="list-unstyled">
+                            <li><a href="#">March 2014</a></li>
+                            <li><a href="#">February 2014</a></li>
+                            <li><a href="#">January 2014</a></li>
+                            <li><a href="#">December 2013</a></li>
+                            <li><a href="#">November 2013</a></li>
+                            <li><a href="#">October 2013</a></li>
+                            <li><a href="#">September 2013</a></li>
+                            <li><a href="#">August 2013</a></li>
+                            <li><a href="#">July 2013</a></li>
+                            <li><a href="#">June 2013</a></li>
+                            <li><a href="#">May 2013</a></li>
+                            <li><a href="#">April 2013</a></li>
+                        </ol>
+                    </div>
+                    <div class="sidebar-module">
+                        <h4>Elsewhere</h4>
+                        <ol class="list-unstyled">
+                            <li><a href="#">GitHub</a></li>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Facebook</a></li>
+                        </ol>
+                    </div>
                 </div>
             </div>
-        </main>
-        <div class="container" id="container">
-        {% block content %}{% endblock %}
         </div>
-        <footer class="footer">
-            <div class="container">
-                <p class="text-muted">@Copyright Phodal.com</p>
-            </div>
-        </footer>
+        <div class="blog-footer">
+            <p>Blog template built for <a href="/">Hu.com</a> by <a href="https://github.com/skyoskiyqq">@skyoskiyqq</a>.</p>
+            <p>
+                <a href="#">Back to top</a>
+            </p>
+        </div>
         <script src="{% static 'js/jquery.min.js' %}"></script>
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
     </body>
